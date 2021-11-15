@@ -1,14 +1,19 @@
 #!/usr/local/bin/python3
-#get the file(test)
-tor = open("testor.fasta").read().split('\n')
-tda = open("testda.fasta").read().split('\n')
-tba = open("testba.fasta").read().split('\n')
-tba2 = open("testba2.fasta").read().split('\n')
-tls = [tor,tda,tba,tba2]
-#
+#test species set: Cosmoscarta
+
+#to run commands in bash
+import os, subprocess 
+
+#obtain the protein family files and its namelist 
+def importf(beast="Cosmoscarta"):
+beast=input("What's the name of the species?\n")
+getfile1="esearch -db protein -query '{}' | efetch -format fasta > {}.fasta".format(beast,beast)
+getfile2="grep '>' {}.fasta | cut -d ' ' -f -1 > namelist_{}".format(beast,beast)
+subprocess.call(getfile1,shell=True)
+sunprocess.call(getfile2,shell=True)
+
+#make files the variable or something
+testvar = str(open("{}.fasta".format(beast)).read().split('>')).split('\\n')
 
 
 
-def fasta(path="/localdisk/home/s2232496/AY21A2/"):
-	with open("/localdisk/home/s2232496/AY21A2/",'r') as f:
-		f = f.read()

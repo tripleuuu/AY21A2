@@ -1,0 +1,9 @@
+#!/bin/bash
+#get the required set
+#variable
+beast="Cosmoscarta"
+db="protein"
+#get the file
+esearch -db $db -query $beast | efetch -format fasta > $beast.fasta
+grep ">" $beast.fasta | cut -d " " -f -1 > namelist_$beast
+
